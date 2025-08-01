@@ -9,7 +9,12 @@ body {
     background-color: beige;
     animation: fadeIn 1s ease-in-out;
 }
-
+.logo{
+    background-image: url(/Logo\ Mouloudia\ Oujda.png);
+    background-size: cover;
+    width: 69px;
+    height: 72px;
+}
 h3 {
     color: white;
     justify-content: center;
@@ -32,7 +37,7 @@ h3:hover {
     justify-content: space-around;
     align-items: center;
     margin-top: 15%;
-    background-color: #064E3B;
+    background-color: #0a4938;
     width: 500px;
     height: 370px;
     border-radius: 12px;
