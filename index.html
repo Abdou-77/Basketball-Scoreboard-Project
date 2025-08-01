@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="scoreboard-section">
+                <div>
+                    <h3>HOME</h3>
+                    <div class="bord">
+                        <span id="home-score"></span>
+                    </div>
+                     <div class="buttons">
+                        <button class="add" onclick="plus1_Home()">+1</button>
+                        <button class="add" onclick="plus2_Home()">+2</button>
+                        <button class="add" onclick="plus3_Home()">+3</button>
+                    </div>
+                    <div class="buttons minus-buttons">
+                        <button class="minus" onclick="minus1_Home()">-1</button>
+                        <button class="minus" onclick="minus2_Home()">-2</button>
+                        <button class="minus" onclick="minus3_Home()">-3</button>
+                    </div>
+                </div>
+                <div>
+                    <h3>GUEST</h3>
+                    <div class="bord">
+                        <span id="away-score"></span>
+                    </div>
+                    <div class="buttons">
+                        <button class="add" onclick="plus1_Away()">+1</button>
+                        <button class="add" onclick="plus2_Away()">+2</button>
+                        <button class="add" onclick="plus3_Away()">+3</button>
+                    </div>
+                    <div class="buttons minus-buttons">
+                        <button class="minus" onclick="minus1_Away()">-1</button>
+                        <button class="minus" onclick="minus2_Away()">-2</button>
+                        <button class="minus" onclick="minus3_Away()">-3</button>
+                    </div>
+                </div>
+            </div>
+            <div class="reset-container">
+                <button class="reset-btn" onclick="resetScores()">RESET</button>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
