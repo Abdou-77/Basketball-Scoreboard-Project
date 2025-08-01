@@ -3,9 +3,17 @@ let awayScore=0;
 let homeSc=document.getElementById("home-score");
 let awyaSc=document.getElementById("away-score");
 
-// Initialize scores display
+// Timer variables
+let gameTime = 720; // 12 minutes in seconds
+let timerInterval;
+let isTimerRunning = false;
+let currentPeriod = 1;
+
+// Initialize displays
 homeSc.textContent = homeScore;
 awyaSc.textContent = awayScore;
+updateTimerDisplay();
+updatePeriodDisplay();
 
 function animateScore(element) {
     element.style.transform = 'scale(1.3)';
@@ -61,6 +69,9 @@ function resetScores() {
     homeSc.textContent = homeScore;
     awyaSc.textContent = awayScore;
     
+    // Also reset timer and period
+    resetGame();
+    
     // Add reset animation
     animateScore(homeSc);
     setTimeout(() => {
@@ -114,4 +125,93 @@ function minus3_Away() {
         awyaSc.textContent = awayScore;
         animateScore(awyaSc);
     }
+}
+
+// Timer Functions
+function updateTimerDisplay() {
+    const minutes = Math.floor(gameTime / 60);
+    const seconds = gameTime % 60;
+    const timerElement = document.getElementById('game-timer');
+    timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    
+    // Change color when time is low
+    if (gameTime <= 60) {
+        timerElement.style.color = '#FF4444';
+        timerElement.style.textShadow = '0 0 15px rgba(255, 68, 68, 0.8)';
+    } else {
+        timerElement.style.color = '#FFD700';
+        timerElement.style.textShadow = '0 0 10px rgba(255, 215, 0, 0.5)';
+    }
+}
+
+function updatePeriodDisplay() {
+    document.getElementById('period-number').textContent = currentPeriod;
+}
+
+function startTimer() {
+    if (!isTimerRunning && gameTime > 0) {
+        isTimerRunning = true;
+        timerInterval = setInterval(() => {
+            gameTime--;
+            updateTimerDisplay();
+            
+            if (gameTime <= 0) {
+                pauseTimer();
+                // Auto advance to next period
+                if (currentPeriod < 4) {
+                    nextPeriod();
+                } else {
+                    alert('Game Over!');
+                }
+            }
+        }, 1000);
+        
+        // Update button states
+        document.getElementById('start-btn').style.opacity = '0.5';
+        document.getElementById('pause-btn').style.opacity = '1';
+    }
+}
+
+function pauseTimer() {
+    isTimerRunning = false;
+    clearInterval(timerInterval);
+    
+    // Update button states
+    document.getElementById('start-btn').style.opacity = '1';
+    document.getElementById('pause-btn').style.opacity = '0.5';
+}
+
+function resetTimer() {
+    pauseTimer();
+    gameTime = 720; // Reset to 12 minutes
+    updateTimerDisplay();
+}
+
+function nextPeriod() {
+    if (currentPeriod < 4) {
+        currentPeriod++;
+        gameTime = 720; // Reset timer for new period
+        updateTimerDisplay();
+        updatePeriodDisplay();
+        
+        // Animate period change
+        const periodElement = document.getElementById('period-number');
+        periodElement.style.transform = 'scale(1.5)';
+        periodElement.style.color = '#FF4444';
+        periodElement.style.textShadow = '0 0 20px rgba(255, 68, 68, 1)';
+        
+        setTimeout(() => {
+            periodElement.style.transform = 'scale(1)';
+            periodElement.style.color = '#FFD700';
+            periodElement.style.textShadow = '0 0 10px rgba(255, 215, 0, 0.5)';
+        }, 500);
+    }
+}
+
+function resetGame() {
+    pauseTimer();
+    currentPeriod = 1;
+    gameTime = 720;
+    updateTimerDisplay();
+    updatePeriodDisplay();
 }

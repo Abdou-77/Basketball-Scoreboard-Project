@@ -11,9 +11,20 @@ body {
 }
 .logo{
     background-image: url(/Logo\ Mouloudia\ Oujda.png);
-    background-size: cover;
-    width: 69px;
-    height: 72px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 90px;
+    height: 95px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
 }
 h3 {
     color: white;
@@ -36,15 +47,140 @@ h3:hover {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 15%;
+    margin-top: 5%;
     background-color: #0a4938;
-    width: 500px;
-    height: 370px;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    width: 720px;
+    height: 750px;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.5);
     animation: slideIn 0.8s ease-out;
     flex-direction: column;
-    padding: 25px 20px;
+    padding: 35px 30px;
+    max-width: 90vw;
+    min-height: 600px;
+}
+
+/* Timer Section */
+.timer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.period-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.period-label {
+    color: white;
+    font-family: 'Clock-font', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+#period-number {
+    color: #FFD700;
+    font-family: 'Clock-font', sans-serif;
+    font-size: 42px;
+    font-weight: bold;
+    text-shadow: 0 0 18px rgba(255, 215, 0, 0.7);
+    transition: all 0.3s ease;
+}
+
+.timer-display {
+    background-color: black;
+    border: 3px solid #333;
+    border-radius: 15px;
+    padding: 20px 40px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+}
+
+#game-timer {
+    color: #FFD700;
+    font-family: 'Clock-font', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    text-shadow: 0 0 18px rgba(255, 215, 0, 0.7);
+    transition: all 0.3s ease;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 15px;
+}
+
+.timer-btn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    height: 42px;
+    width: 75px;
+    font-family: 'Clock-font', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.timer-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.5s ease;
+}
+
+.timer-btn:hover::before {
+    left: 100%;
+}
+
+.timer-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.timer-btn:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+#start-btn:hover {
+    color: #4CAF50;
+    border-color: rgba(76, 175, 80, 0.4);
+}
+
+#pause-btn:hover {
+    color: #FF9800;
+    border-color: rgba(255, 152, 0, 0.4);
+}
+
+#reset-timer-btn:hover {
+    color: #FF4444;
+    border-color: rgba(255, 68, 68, 0.4);
 }
 
 .scoreboard-section {
@@ -53,18 +189,36 @@ h3:hover {
     align-items: center;
     width: 100%;
     flex: 1;
-    gap: 30px;
+    gap: 50px;
+}
+h3 {
+    color: white;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 36px;
+    margin-top: 0px;
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: 4px;
+}
+
+h3:hover {
+    transform: scale(1.1);
+    color: #FFD700;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
 }
 .bord {
-    height: 100px;
-    width: 140px;
-    border-radius: 8px;
-    margin-bottom: 12px;
+    height: 120px;
+    width: 180px;
+    border-radius: 12px;
+    margin-bottom: 18px;
     background-color: black;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #333;
+    border: 3px solid #333;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
 }
 
 
@@ -73,9 +227,9 @@ h3:hover {
 }
 
 #home-score, #away-score {
-    font-size: 56px;
+    font-size: 68px;
     color: #FF4444;
-    text-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+    text-shadow: 0 0 18px rgba(255, 68, 68, 0.7);
     transition: all 0.3s ease;
 }
 
@@ -91,18 +245,18 @@ h3:hover {
     -webkit-backdrop-filter: blur(10px);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 6px;
-    height: 38px;
-    width: 38px;
+    border-radius: 10px;
+    height: 46px;
+    width: 46px;
     margin-left: 0;
     margin-right: 0;
-    margin-top: 8px;
+    margin-top: 12px;
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
     overflow: hidden;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
@@ -123,7 +277,7 @@ h3:hover {
 }
 
 .add:not(:first-child) {
-    margin-left: 8px;
+    margin-left: 12px;
 }
 
 .add:hover {
@@ -149,18 +303,18 @@ h3:hover {
     -webkit-backdrop-filter: blur(10px);
     color: #FF4444;
     border: 1px solid rgba(255, 68, 68, 0.3);
-    border-radius: 6px;
-    height: 38px;
-    width: 38px;
+    border-radius: 10px;
+    height: 46px;
+    width: 46px;
     margin-left: 0;
     margin-right: 0;
-    margin-top: 8px;
+    margin-top: 12px;
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
     overflow: hidden;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     box-shadow: 0 4px 15px rgba(255, 68, 68, 0.2), 
                 inset 0 1px 0 rgba(255, 68, 68, 0.1);
 }
@@ -181,7 +335,7 @@ h3:hover {
 }
 
 .minus:not(:first-child) {
-    margin-left: 8px;
+    margin-left: 12px;
 }
 
 .minus:hover {
@@ -201,7 +355,7 @@ h3:hover {
 }
 
 .minus-buttons {
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 /* Animations */
@@ -275,7 +429,8 @@ h3:hover {
 .reset-container {
     display: flex;
     justify-content: center;
-    margin-top: 0px;
+    gap: 22px;
+    margin-top: 30px;
     width: 100%;
 }
 
@@ -285,11 +440,11 @@ h3:hover {
     -webkit-backdrop-filter: blur(10px);
     color: #FF4444;
     border: 2px solid rgba(255, 68, 68, 0.3);
-    border-radius: 8px;
-    height: 45px;
-    width: 85px;
+    border-radius: 12px;
+    height: 52px;
+    width: 100px;
     font-family: 'Clock-font', sans-serif;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -297,6 +452,23 @@ h3:hover {
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(255, 68, 68, 0.2), 
                 inset 0 1px 0 rgba(255, 68, 68, 0.1);
+}
+
+.period-btn {
+    background: rgba(255, 215, 0, 0.1);
+    color: #FFD700;
+    border-color: rgba(255, 215, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2), 
+                inset 0 1px 0 rgba(255, 215, 0, 0.1);
+    font-size: 16px;
+    width: 120px;
+}
+
+.period-btn:hover {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3), 
+                inset 0 1px 0 rgba(255, 215, 0, 0.2);
 }
 
 .reset-btn::before {
@@ -331,79 +503,343 @@ h3:hover {
 }
 
 /* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 95vw;
+        max-width: 680px;
+        height: auto;
+        margin-top: 3%;
+        padding: 30px 25px;
+    }
+
+    .logo {
+        width: 85px;
+        height: 90px;
+        margin-bottom: 18px;
+    }
+
+    .timer-section {
+        margin-bottom: 28px;
+    }
+
+    .period-label {
+        font-size: 19px;
+    }
+
+    #period-number {
+        font-size: 40px;
+    }
+
+    #game-timer {
+        font-size: 46px;
+    }
+
+    .timer-btn {
+        width: 70px;
+        height: 40px;
+        font-size: 13px;
+    }
+
+    .scoreboard-section {
+        gap: 45px;
+    }
+
+    h3 {
+        font-size: 34px;
+        margin-bottom: 14px;
+        letter-spacing: 3.5px;
+    }
+
+    .bord {
+        width: 170px;
+        height: 110px;
+        margin-bottom: 16px;
+    }
+
+    #home-score, #away-score {
+        font-size: 62px;
+    }
+
+    .add, .minus {
+        width: 44px;
+        height: 44px;
+        font-size: 15px;
+        margin-left: 11px;
+    }
+
+    .reset-btn {
+        width: 95px;
+        height: 48px;
+        font-size: 16px;
+    }
+
+    .period-btn {
+        width: 115px;
+        font-size: 15px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .container {
-        width: 90vw;
-        max-width: 450px;
+        width: 92vw;
+        max-width: 600px;
         height: auto;
-        margin-top: 10%;
-        padding: 20px 15px;
+        margin-top: 2%;
+        padding: 25px 20px;
+    }
+
+    .logo {
+        width: 70px;
+        height: 75px;
+        margin-bottom: 15px;
+    }
+
+    .timer-section {
+        margin-bottom: 25px;
+    }
+
+    .period-label {
+        font-size: 18px;
+    }
+
+    #period-number {
+        font-size: 36px;
+    }
+
+    #game-timer {
+        font-size: 42px;
+    }
+
+    .timer-display {
+        padding: 15px 30px;
+        margin-bottom: 15px;
+    }
+
+    .timer-controls {
+        gap: 12px;
+    }
+
+    .timer-btn {
+        width: 65px;
+        height: 36px;
+        font-size: 12px;
     }
 
     .scoreboard-section {
         flex-direction: column;
-        gap: 30px;
+        gap: 35px;
+    }
+
+    h3 {
+        font-size: 30px;
+        margin-bottom: 12px;
+        letter-spacing: 2px;
+    }
+
+    .bord {
+        width: 160px;
+        height: 100px;
+        margin-bottom: 15px;
+    }
+
+    #home-score, #away-score {
+        font-size: 55px;
+    }
+
+    .add, .minus {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+        margin-left: 8px;
+    }
+
+    .add:not(:first-child), .minus:not(:first-child) {
+        margin-left: 8px;
+    }
+
+    .reset-container {
+        gap: 18px;
+        margin-top: 25px;
+    }
+
+    .reset-btn {
+        width: 85px;
+        height: 44px;
+        font-size: 14px;
+    }
+
+    .period-btn {
+        width: 105px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: 96vw;
+        margin-top: 1%;
+        padding: 20px 15px;
+    }
+
+    .logo {
+        width: 50px;
+        height: 55px;
+        margin-bottom: 12px;
+    }
+
+    .timer-section {
+        margin-bottom: 20px;
+    }
+
+    .period-label {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    #period-number {
+        font-size: 28px;
+    }
+
+    #game-timer {
+        font-size: 32px;
+    }
+
+    .timer-display {
+        padding: 12px 25px;
+        margin-bottom: 12px;
+    }
+
+    .timer-controls {
+        gap: 8px;
+    }
+
+    .timer-btn {
+        width: 55px;
+        height: 32px;
+        font-size: 10px;
+    }
+
+    .scoreboard-section {
+        gap: 25px;
     }
 
     h3 {
         font-size: 24px;
+        letter-spacing: 1px;
         margin-bottom: 10px;
     }
 
     .bord {
         width: 120px;
         height: 80px;
-        margin-bottom: 15px;
+        margin-bottom: 12px;
     }
 
     #home-score, #away-score {
-        font-size: 48px;
-    }
-
-    .add, .minus {
-        width: 35px;
-        height: 35px;
-        font-size: 12px;
-        margin-left: 6px;
-    }
-
-    .reset-btn {
-        width: 75px;
-        height: 40px;
-        font-size: 14px;
-    }
-
-    .logo {
-        width: 50px;
-        height: 52px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .container {
-        width: 95vw;
-        margin-top: 5%;
-        padding: 15px 10px;
-    }
-
-    h3 {
-        font-size: 20px;
-        letter-spacing: 1px;
-    }
-
-    .bord {
-        width: 100px;
-        height: 70px;
-    }
-
-    #home-score, #away-score {
-        font-size: 40px;
+        font-size: 36px;
     }
 
     .add, .minus {
         width: 32px;
         height: 32px;
+        font-size: 12px;
+        margin-left: 6px;
+    }
+
+    .add:not(:first-child), .minus:not(:first-child) {
+        margin-left: 6px;
+    }
+
+    .minus-buttons {
+        margin-top: 8px;
+    }
+
+    .reset-container {
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .reset-btn {
+        width: 70px;
+        height: 38px;
+        font-size: 12px;
+    }
+
+    .period-btn {
+        width: 90px;
         font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .container {
+        width: 98vw;
+        padding: 15px 10px;
+        margin-top: 1%;
+    }
+
+    .logo {
+        width: 40px;
+        height: 42px;
+        margin-bottom: 10px;
+    }
+
+    .timer-section {
+        margin-bottom: 15px;
+    }
+
+    .period-label {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    #period-number {
+        font-size: 24px;
+    }
+
+    #game-timer {
+        font-size: 28px;
+    }
+
+    .timer-display {
+        padding: 10px 20px;
+        margin-bottom: 10px;
+    }
+
+    .timer-controls {
+        gap: 6px;
+    }
+
+    .timer-btn {
+        width: 50px;
+        height: 28px;
+        font-size: 9px;
+    }
+
+    .scoreboard-section {
+        gap: 20px;
+    }
+
+    h3 {
+        font-size: 20px;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+
+    .bord {
+        width: 100px;
+        height: 70px;
+        margin-bottom: 10px;
+    }
+
+    #home-score, #away-score {
+        font-size: 30px;
+    }
+
+    .add, .minus {
+        width: 28px;
+        height: 28px;
+        font-size: 10px;
         margin-left: 4px;
     }
 
@@ -411,55 +847,175 @@ h3:hover {
         margin-left: 4px;
     }
 
-    .reset-btn {
-        width: 65px;
-        height: 35px;
-        font-size: 12px;
-    }
-
-    .logo {
-        width: 40px;
-        height: 42px;
-    }
-
     .minus-buttons {
-        margin-top: 3px;
+        margin-top: 6px;
+    }
+
+    .reset-container {
+        gap: 12px;
+        margin-top: 15px;
+    }
+
+    .reset-btn {
+        width: 60px;
+        height: 32px;
+        font-size: 10px;
+    }
+
+    .period-btn {
+        width: 75px;
+        font-size: 9px;
     }
 }
 
-@media screen and (max-width: 320px) {
+/* Extra small devices - improve usability */
+@media screen and (max-width: 280px) {
     .container {
-        width: 98vw;
-        padding: 10px 5px;
+        width: 99vw;
+        padding: 10px 8px;
+    }
+
+    .logo {
+        width: 35px;
+        height: 38px;
+        margin-bottom: 8px;
+    }
+
+    .period-label {
+        font-size: 12px;
+    }
+
+    #period-number {
+        font-size: 20px;
+    }
+
+    #game-timer {
+        font-size: 24px;
+    }
+
+    .timer-display {
+        padding: 8px 15px;
+    }
+
+    .timer-btn {
+        width: 45px;
+        height: 26px;
+        font-size: 8px;
     }
 
     h3 {
         font-size: 18px;
+        margin-bottom: 6px;
+    }
+
+    .bord {
+        width: 85px;
+        height: 60px;
+    }
+
+    #home-score, #away-score {
+        font-size: 26px;
+    }
+
+    .add, .minus {
+        width: 24px;
+        height: 24px;
+        font-size: 9px;
+        margin-left: 3px;
+    }
+
+    .add:not(:first-child), .minus:not(:first-child) {
+        margin-left: 3px;
+    }
+
+    .reset-btn {
+        width: 50px;
+        height: 28px;
+        font-size: 9px;
+    }
+
+    .period-btn {
+        width: 65px;
+        font-size: 8px;
+    }
+}
+
+/* Landscape orientation for mobile devices */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .container {
+        margin-top: 2%;
+        height: auto;
+        min-height: auto;
+        padding: 15px 20px;
+    }
+
+    .logo {
+        width: 45px;
+        height: 48px;
+        margin-bottom: 8px;
+    }
+
+    .timer-section {
+        margin-bottom: 15px;
+    }
+
+    .period-label {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    #period-number {
+        font-size: 22px;
+    }
+
+    #game-timer {
+        font-size: 26px;
+    }
+
+    .timer-display {
+        padding: 8px 20px;
+        margin-bottom: 8px;
+    }
+
+    .scoreboard-section {
+        flex-direction: row;
+        gap: 30px;
+    }
+
+    h3 {
+        font-size: 18px;
+        margin-bottom: 6px;
     }
 
     .bord {
         width: 90px;
         height: 60px;
+        margin-bottom: 8px;
     }
 
     #home-score, #away-score {
-        font-size: 32px;
+        font-size: 28px;
     }
 
     .add, .minus {
-        width: 28px;
-        height: 28px;
-        font-size: 10px;
+        width: 24px;
+        height: 24px;
+        font-size: 9px;
+    }
+
+    .reset-container {
+        margin-top: 10px;
+        gap: 10px;
     }
 
     .reset-btn {
-        width: 55px;
-        height: 30px;
-        font-size: 11px;
+        width: 50px;
+        height: 26px;
+        font-size: 9px;
     }
 
-    .logo {
-        width: 35px;
-        height: 37px;
+    .period-btn {
+        width: 65px;
+        font-size: 8px;
     }
 }
